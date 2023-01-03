@@ -1,0 +1,50 @@
+<div class="card-wrapper">
+  <!-- Start convertor card -->
+  <mat-card class="m-5 bg-dark">
+    <mat-card-header class="mat-h3">{{type?.toUpperCase()}}</mat-card-header>
+
+    <mat-card-content>
+      <form class="input-form">
+        <!-- To fields --->
+        <mat-form-field appearance="fill" class="width100">
+          <mat-label>From</mat-label>
+          <input (input)="update(false)" [(ngModel)]="fromValue" name="fromValue" inputmode="decimal" matInput type="number">
+          <button matSuffix mat-icon-button aria-label="Copy" (click)="copyValue('fromValue')"><mat-icon aria-hidden="false" aria-label="file copy icon" fontIcon="file_copy"></mat-icon></button>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="width100">
+          <mat-label>From Unit</mat-label>
+          <mat-select (selectionChange)="calculate()" [(ngModel)]="fromUnit" name="fromUnit">
+            <mat-option *ngFor="let unit of getUnits()" value={{unit}}>{{unit}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- From fields --->
+        <mat-form-field appearance="fill" class="width100">
+          <mat-label>To Unit</mat-label>
+          <mat-select (selectionChange)="calculate()" [(ngModel)]="toUnit" name="toUnit">
+            <mat-option *ngFor="let unit of getUnits()" value={{unit}}>{{unit}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="width100">
+          <mat-label>To</mat-label>
+          <input (input)="update(true)" [(ngModel)]="toValue" name="toValue" inputmode="decimal" matInput type="number">
+          <button matSuffix mat-icon-button aria-label="Copy" (click)="copyValue('toValue')"><mat-icon aria-hidden="false" aria-label="file copy icon" fontIcon="file_copy"></mat-icon></button>
+        </mat-form-field>
+      </form>
+      <output type="text" [value]="summary"></output>
+    </mat-card-content>
+  </mat-card>
+  <!-- End convertor Card   -->
+
+  <!-- Start details card -->
+  <!--    <mat-card class="m-3">-->
+  <!--      <mat-card-header class="mat-h3">DETAILS</mat-card-header>-->
+  <!--      <mat-card-content>-->
+  <!--        Other information-->
+  <!--      </mat-card-content>-->
+  <!--    </mat-card>-->
+  <!-- Start details card -->
+</div>
+
+
+
+
