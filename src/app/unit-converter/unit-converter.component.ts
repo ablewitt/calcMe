@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import configureMeasurements, {AllMeasures, allMeasures, AllMeasuresUnits} from 'convert-units';
 import {Clipboard} from '@angular/cdk/clipboard';
+import {GoogleAnalyticsService} from "ngx-google-analytics";
 
 @Component({
   selector: 'app-unit-converter',
@@ -18,7 +19,7 @@ export class UnitConverterComponent implements OnInit {
   fromUnit?: AllMeasuresUnits;
   summary: string = "";
 
-  constructor(private clipboard: Clipboard) {
+  constructor(private clipboard: Clipboard, private gaService: GoogleAnalyticsService) {
   }
 
   ngOnInit() {
@@ -30,13 +31,21 @@ export class UnitConverterComponent implements OnInit {
   }
 
   calculate() {
-    if (this.fromUnit && this.toUnit){
+    if (this.fromUnit && this.toUnit) {
       if (this.reverseCalc) {
         this.fromValue = this.convert(this.toValue).from(this.toUnit).to(this.fromUnit)
       } else {
         this.toValue = this.convert(this.fromValue).from(this.fromUnit).to(this.toUnit)
       }
-      this.summary ="Result: "+  this.fromValue + this.fromUnit + " ≡ " + this.toValue + this.toUnit
+      this.summary = "Result: " + this.fromValue + this.fromUnit + " ≡ " + this.toValue + this.toUnit
+
+      this.gaService.event("unit_conversion", this.type, undefined,undefined,undefined, {
+        fromValue: this.fromValue,
+        fromUnit: this.fromUnit,
+        toValue: this.toValue,
+        toUnit: this.toUnit,
+        reverse: this.reverseCalc
+      })
     }
   }
 
