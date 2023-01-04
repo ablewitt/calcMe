@@ -22,6 +22,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTabsModule} from "@angular/material/tabs";
 import { UnitTabsComponent } from './unit-tabs/unit-tabs.component';
 import {ClipboardModule} from "@angular/cdk/clipboard";
+import {NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule} from "ngx-google-analytics";
+import {environment} from "../environment/environment";
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import {ClipboardModule} from "@angular/cdk/clipboard";
     ReactiveFormsModule,
     FormsModule,
     MatTabsModule,
-    ClipboardModule
+    ClipboardModule,
+    NgxGoogleAnalyticsModule.forRoot(environment.ga_id),
+    NgxGoogleAnalyticsRouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
