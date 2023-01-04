@@ -1,6 +1,6 @@
 <div class="card-wrapper">
   <!-- Start convertor card -->
-  <mat-card class="m-5 bg-dark">
+  <mat-card class="m-5">
     <mat-card-header class="mat-h3">{{type?.toUpperCase()}}</mat-card-header>
 
     <mat-card-content>
@@ -14,14 +14,14 @@
         <mat-form-field appearance="fill" class="width100">
           <mat-label>From Unit</mat-label>
           <mat-select (selectionChange)="calculate()" [(ngModel)]="fromUnit" name="fromUnit">
-            <mat-option *ngFor="let unit of getUnits()" value={{unit}}>{{unit}}</mat-option>
+            <mat-option *ngFor="let unit of getUnits()" [value]="unit">{{unit}}</mat-option>
           </mat-select>
         </mat-form-field>
         <!-- From fields --->
         <mat-form-field appearance="fill" class="width100">
           <mat-label>To Unit</mat-label>
           <mat-select (selectionChange)="calculate()" [(ngModel)]="toUnit" name="toUnit">
-            <mat-option *ngFor="let unit of getUnits()" value={{unit}}>{{unit}}</mat-option>
+            <mat-option *ngFor="let unit of getUnits()" [value]="unit">{{unit}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill" class="width100">
@@ -30,7 +30,7 @@
           <button matSuffix mat-icon-button aria-label="Copy" (click)="copyValue('toValue')"><mat-icon aria-hidden="false" aria-label="file copy icon" fontIcon="file_copy"></mat-icon></button>
         </mat-form-field>
       </form>
-      <output type="text" [value]="summary"></output>
+      <output [value]="summary"></output>
     </mat-card-content>
   </mat-card>
   <!-- End convertor Card   -->
