@@ -24,13 +24,17 @@ import { UnitTabsComponent } from './unit-tabs/unit-tabs.component';
 import {ClipboardModule} from "@angular/cdk/clipboard";
 import {NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule} from "ngx-google-analytics";
 import {environment} from "../environment/environment";
+import { FooterComponent } from './footer/footer.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderNavComponent,
     UnitConverterComponent,
-    UnitTabsComponent
+    UnitTabsComponent,
+    FooterComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
